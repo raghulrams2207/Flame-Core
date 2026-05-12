@@ -1,0 +1,166 @@
+/* ============================================
+   ANIMATIONS.CSS — LPG Premium Website
+   Advanced animations & effects
+   ============================================ */
+
+/* ── Page Load ─────────────────────────────── */
+@keyframes pageReveal {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+body { animation: pageReveal 0.5s ease both; }
+
+/* ── Ripple Effect on Buttons ──────────────── */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(0);
+  animation: rippleEffect 0.7s linear;
+  pointer-events: none;
+}
+@keyframes rippleEffect {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* ── Shimmer ───────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(200,150,42,0.08) 50%, transparent 100%);
+  background-size: 1000px 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* ── Counter Animate ───────────────────────── */
+.count-up { transition: all 0.05s; }
+
+/* ── Parallax Depth ────────────────────────── */
+.parallax-slow  { will-change: transform; }
+.parallax-fast  { will-change: transform; }
+
+/* ── Stagger Children ──────────────────────── */
+.stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.10s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.20s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.25s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.30s; }
+
+/* ── Hover Line Reveal ─────────────────────── */
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ── Orbiting Ring ─────────────────────────── */
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+.orbit-dot {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: absolute;
+  animation: orbit 8s linear infinite;
+}
+.orbit-dot:nth-child(2) { animation-delay: -2.7s; }
+.orbit-dot:nth-child(3) { animation-delay: -5.3s; }
+
+/* ── Breathing Ring ────────────────────────── */
+@keyframes breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.4; }
+  50%       { transform: translate(-50%, -50%) scale(1.05); opacity: 0.8; }
+}
+.breathe-ring {
+  position: absolute;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  left: 50%; top: 50%;
+  animation: breathe 3s ease-in-out infinite;
+}
+
+/* ── Text Reveal Clip ──────────────────────── */
+@keyframes clipReveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+.clip-reveal { animation: clipReveal 1s cubic-bezier(0.23, 1, 0.32, 1) both; }
+
+/* ── Scale In ──────────────────────────────── */
+@keyframes scaleIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+.scale-in { animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+/* ── Diagonal Pan ──────────────────────────── */
+@keyframes diagonalPan {
+  from { transform: translate(-2%, -2%); }
+  to   { transform: translate(2%, 2%); }
+}
+
+/* ── Pulse Ring ────────────────────────────── */
+@keyframes pulseRing {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2); opacity: 0; }
+}
+.pulse-ring {
+  position: absolute; inset: -20px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  animation: pulseRing 2.5s ease-out infinite;
+}
+.pulse-ring:nth-child(2) { animation-delay: 0.8s; }
+.pulse-ring:nth-child(3) { animation-delay: 1.6s; }
+
+/* ── Glow Pulse ────────────────────────────── */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(200, 150, 42, 0.2); }
+  50%       { box-shadow: 0 0 60px rgba(200, 150, 42, 0.5), 0 0 100px rgba(200, 150, 42, 0.2); }
+}
+.glow-pulse { animation: glowPulse 3s ease-in-out infinite; }
+
+/* ── Marquee Pause on Hover ────────────────── */
+.ticker:hover .ticker__track { animation-play-state: paused; }
+
+/* ── Form Focus Glow ───────────────────────── */
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  box-shadow: 0 0 0 3px rgba(200, 150, 42, 0.08), 0 0 20px rgba(200, 150, 42, 0.05);
+}
+
+/* ── Scroll Progress Bar ───────────────────── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-pale));
+  z-index: 9997;
+  transition: width 0.1s linear;
+}
+
+/* ── Map Grid Animation ────────────────────── */
+@keyframes mapPing {
+  0%   { transform: scale(1); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
+}
+.map-ping::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  animation: mapPing 2s ease-out infinite;
+}
+
+/* ── Product Card Image Float ──────────────── */
+.product-cylinder {
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.product-card:hover .product-cylinder {
+  transform: translateY(-12px) scale(1.03);
+}
